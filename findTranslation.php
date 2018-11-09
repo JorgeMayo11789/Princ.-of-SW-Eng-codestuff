@@ -9,17 +9,7 @@
         $conn = new
         PDO ("mysql:host=$servername;dbname=jmayoral2017", trim($username), trim($password));
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO :: ERRMODE_EXCEPTION);
-        //echo "Connected successfully<br>";
-     
-       // echo '<script language="javascript">';
-       // echo 'alert("Connection successfull")';
-       // echo '</script>';
         $from = $_POST['postfrom'];
-      /*  $from2 = "";
-        if($from == "C++"){
-           $from2 = "Cplusplus";
-        }
-        echo $from2 . "</br>";*/
         $to = $_POST['postto'];
         $word = $_POST['postword'];
      
@@ -46,7 +36,6 @@
         }
           
         if ($from != null){
-            echo "<script type='text/javascript'>alert('$from');</script>";
           /******FIND THE INDEX FROM TABLE*****/
             
             
