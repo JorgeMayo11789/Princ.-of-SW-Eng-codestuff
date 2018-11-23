@@ -1,0 +1,41 @@
+<?php 
+
+session_start();
+
+//Connect to database
+include('../io_db_connect.php');
+
+
+//Check if the user is logged in
+function isLoggedIn()
+{
+	if (isset($_SESSION['user'])) {
+		return true;
+	}else{
+		return false;
+	}
+}
+
+//Check if it is Tutor
+function isTutor()
+{
+	if (isset($_SESSION['user']) && $_SESSION['user']['Type'] == 'tutor' ) {
+		return true;
+	}else{
+		return false;
+	}
+}
+
+//Check if it is Student
+function isStudent()
+{
+	if (isset($_SESSION['user']) && $_SESSION['user']['Type'] == 'student' ) {
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
+
+?>
