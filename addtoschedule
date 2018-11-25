@@ -1,0 +1,41 @@
+<?php 
+//Database connection
+        //$servername = "localhost";
+        //CONNECT TO DATABASE
+        //$username = "jmayoral2017";
+        //$password = "gQ52FJ9MRr";
+        //$conn = new mysqli($servername, $username, $password, $username);
+     
+     session_start();
+     include('../io_db_connect.php');
+
+        $tutorname = $_SESSION['user']['FirstName'];
+        $days = $_POST['postdays'];
+        $times = $_POST['posttimes'];     
+
+     /*************************************************************  From  ***************************************************/
+     /******FIND THE INDEX FROM TABLE*****/
+             
+    $sql =   ("INSERT INTO Schedule (TutorName, Day, Times) VALUES ('$tutorname', '$days','$times')");
+
+    $id =   ("SELECT ID FROM Schedule WHERE (TutorName = '$tutorname' AND Day = '$days' AND Times = '$times')");
+
+             
+if ($mysqli->query($sql) === TRUE && $mysqli->query($id) === TRUE) {
+  	  echo "New record created successfully";
+        //DISPLAY ON STUDENT SCHEDULE TABLE
+        $rowData = array("$id","$tutorname","$days", "$times")
+        echo"
+          <tr>
+                <td>$rowData[0]</td>
+                <td>$rowData[1]</td>
+                <td>$rowData[2]</td>
+                <td>$rowData[3]</td>
+                <td><input type = "button" value = "Book Session"></td>
+          </tr>
+        "    
+	} else {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+
+?>
